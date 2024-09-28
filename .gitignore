@@ -14,6 +14,7 @@
 *.jar
 *.war
 *.ear
+*.rar
 
 # Eclipse
 .project
@@ -55,3 +56,5 @@ build/
 
 # Windows
 Thumbs.db
+
+.
