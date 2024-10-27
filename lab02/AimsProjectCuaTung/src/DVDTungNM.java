@@ -11,40 +11,20 @@ public class DVDTungNM {
         return title;
     }
 
-    public void setTitleNmt(String title) {
-        this.title = title;
-    }
-
     public String getCategoryNmt() {
         return category;
-    }
-
-    public void setCategoryNmt(String category) {
-        this.category = category;
     }
 
     public String getAuthorNmt() {
         return author;
     }
 
-    public void setAuthorNmt(String author) {
-        this.author = author;
-    }
-
     public int getLengthNmt() {
         return length;
     }
 
-    public void setLengthNmt(int length) {
-        this.length = length;
-    }
-
     public float getPrice() {
         return price;
-    }
-
-    public void setPriceNmt(float price) {
-        this.price = price;
     }
 
     // Create DVD
