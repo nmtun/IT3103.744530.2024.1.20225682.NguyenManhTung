@@ -56,8 +56,15 @@ public class CartTungNM {
     public float totalPrice(){
         float total = 0;
         for(int i=0; i<qtyOrdered; i++){
-            total += itemsOrdered[i].getPrice();
+            total += itemsOrdered[i].getPriceNmt();
         }
         return total;
+    }
+
+    //print id + cart list
+    public void listIdTungNM() {
+        for(int i=0 ; i<qtyOrdered; i++) {
+            System.out.println("ID: " + itemsOrdered[i].getIdNmt() + " - " + itemsOrdered[i].getTitleNmt());
+        }
     }
 }
