@@ -90,4 +90,11 @@ public class DVDTungNM {
         this.length = length;
     }
 
+    // method check title matching    
+    public boolean isMatchNmt(String title) {
+       if(this.title == null) {
+            return false;
+       }
+       return this.title.equalsIgnoreCase(title);
+    }
 }
