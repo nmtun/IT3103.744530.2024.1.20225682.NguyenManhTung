@@ -48,5 +48,4 @@ public class TestPassingParameter {
         dvd2.setAuthorNmt(tmp.getAuthorNmt());
         dvd2.setLengthNmt(tmp.getLengthNmt());
     }
-
 }
