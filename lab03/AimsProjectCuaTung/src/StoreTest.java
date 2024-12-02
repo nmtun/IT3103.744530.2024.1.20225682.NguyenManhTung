@@ -1,3 +1,5 @@
+import hust.soict.dsai.aims.media.StoreNmt;
+
 public class StoreTest {
     public static void main(String[] args) {
         StoreNmt myStore = new StoreNmt();
