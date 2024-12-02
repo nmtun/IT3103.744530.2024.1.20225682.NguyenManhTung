@@ -1,4 +1,3 @@
-
 public class AimsTungNM {
     public static void main(String[] args) {
         //create new cart
