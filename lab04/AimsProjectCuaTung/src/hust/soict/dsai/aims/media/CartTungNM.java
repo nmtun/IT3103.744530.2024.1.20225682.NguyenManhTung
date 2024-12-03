@@ -1,6 +1,5 @@
 package hust.soict.dsai.aims.media;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CartTungNM {
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -13,7 +12,7 @@ public class CartTungNM {
             return false;
         } else {
             itemsOrdered.add(media);
-            System.out.println("Item has been added");
+            System.out.println("Item has been added in your cart");
             return true;
         }
 	}
@@ -25,7 +24,7 @@ public class CartTungNM {
             return false;
         } else {
             itemsOrdered.remove(media);
-            System.out.println("Item has been removed");
+            System.out.println("Item has been removed in your cart");
             return true;
         }
     }
@@ -55,13 +54,24 @@ public class CartTungNM {
     }
 
     // search by ID
-    public boolean searchByIdNmt(int id) {
-        int n = itemsOrdered.size();
-        for(int i=0; i<n; i++) {
-            if(itemsOrdered.get(n).getId() == id) return true;
+    // public boolean searchByIdNmt(int id) {
+    //     int n = itemsOrdered.size();
+    //     for(int i=0; i<n; i++) {
+    //         if(itemsOrdered.get(n).getId() == id) return true;
+    //     }
+    //     return false;
+    // }
+
+    public MediaTungNM searchByIdNmt(int id) {
+        for (MediaTungNM item : itemsOrdered) {
+            if (item.getId() == id) {
+                return item; // Trả về đối tượng nếu tìm thấy
+            }
         }
-        return false;
+        return null; // Trả về null nếu không tìm thấy
     }
+    
+    
 
     //search by title 
     // public boolean searchByTitleNmt(String title) {
@@ -94,8 +104,18 @@ public class CartTungNM {
         return null; // Return null if no match is found
     }
 
-    public List<MediaTungNM> getItemOrdered() {
-        return itemsOrdered;
+    public void sortByCost() {
+        Collections.sort(itemsOrdered, MediaTungNM.COMPARE_BY_COST_TITLE);
+    }
+
+    public void sortByTitle() {
+        Collections.sort(itemsOrdered, MediaTungNM.COMPARE_BY_TITLE_COST);
+    }
+
+    public void emptyCart() {
+        for(int i=0; i<itemsOrdered.size(); i++) {
+            itemsOrdered.clear();
+        }
     }
 
 }

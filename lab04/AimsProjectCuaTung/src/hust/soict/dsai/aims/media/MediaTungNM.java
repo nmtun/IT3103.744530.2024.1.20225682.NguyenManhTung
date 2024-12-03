@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
 
-public abstract class MediaTungNM {
+public abstract class MediaTungNM implements Comparable<MediaTungNM>{
     private int id;
     private String title;
     private String category;
@@ -67,7 +67,7 @@ public abstract class MediaTungNM {
 
     // method check title matching    
     public boolean isMatchNmt(String title) {
-        return (this.getTitle().toLowerCase().equals(title.toLowerCase()));
+        return this.getTitle().trim().equalsIgnoreCase(title.trim());
     }
 
     @Override
@@ -86,4 +86,26 @@ public abstract class MediaTungNM {
                 ", cost=" + price + 
                 '}'; 
     }
+
+    @Override
+    public int compareTo(MediaTungNM o) {
+    // So sánh tiêu đề trước
+    int titleCompare = getTitle().compareTo(o.getTitle());
+    if (titleCompare != 0) return titleCompare;
+
+    // So sánh giá nếu tiêu đề bằng nhau
+    return Double.compare(getPrice(), o.getPrice());
+}
+
+    public Object getLength() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLength'");
+    }
+
+    public Object getLengt() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLengt'");
+    }
+
+
 }

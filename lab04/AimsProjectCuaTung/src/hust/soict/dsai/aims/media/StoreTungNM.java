@@ -42,7 +42,7 @@ public class StoreTungNM {
     }
 
     public void printItemsInStore() {
-        System.out.println("***********************CART***********************");
+        System.out.println("***********************STORE***********************");
         System.out.println("Available Items:");
         for(int i=0; i<itemsInNmtStore.size(); i++) {
             MediaTungNM media = itemsInNmtStore.get(i);
