@@ -16,6 +16,10 @@ public class BookTungNM extends MediaTungNM{
         super(id, title, category, price);
     }
 
+    public BookTungNM(String title, float price) {
+        super(title, price);
+    }
+
     public boolean addAuthor(String name) {
         if(authors.contains(name)) {
             System.out.println("Already exits");

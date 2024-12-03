@@ -2,15 +2,12 @@ package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
 
-public class MediaComparatorByCostTitle implements Comparator<MediaTungNM >{
-    public MediaComparatorByCostTitle() {
-
-    }
-    
+public class MediaComparatorByCostTitle implements Comparator<MediaTungNM>{
     @Override
-    public int compare(MediaTungNM m1, MediaTungNM m2) {
-        return Comparator.comparing((MediaTungNM m) -> -m.getPrice())
+    public int compare(MediaTungNM o1, MediaTungNM o2) {
+        return Comparator.comparingDouble(MediaTungNM::getPrice)
+                .reversed()
                 .thenComparing(MediaTungNM::getTitle)
-                .compare(m1, m2);
+                .compare(o1, o2);
     }
 }
