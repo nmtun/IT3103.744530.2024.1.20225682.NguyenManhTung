@@ -1,6 +1,5 @@
 package hust.soict.dsai.aims.media;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CartTungNM {
@@ -65,17 +64,38 @@ public class CartTungNM {
     }
 
     //search by title 
-    public void searchByTitleNmt(String title) {
-        int n = itemsOrdered.size();
-        boolean check = false;
-        for(int i=0; i<n; i++) {
-            if(itemsOrdered.get(n).isMatchNmt(title)) {
-                System.out.println("Your cart has a Media as name: " + title);
-                check = true;
-            } 
+    // public boolean searchByTitleNmt(String title) {
+    //     int n = itemsOrdered.size();
+    //     //boolean check = false;
+    //     int cnt = 0;
+    //     for(int i=0; i<n; i++) {
+    //         if(itemsOrdered.get(i).isMatchNmt(title)) {
+    //             // System.out.println("Your cart has a Media as name: " + title);
+    //             // return true;
+    //             cnt++;
+    //         } 
+    //     }
+    //     if(cnt != 0) {
+    //         System.out.println("Your cart has a Media as name: " + title);
+    //         return true;
+    //     } else {
+    //         System.out.println("No data is matching");
+    //         return false;
+    //     }
+    // }
+
+    public MediaTungNM searchByTitleNmt(String title) {
+        for (MediaTungNM media : itemsOrdered) {
+            if (media.isMatchNmt(title)) {
+                return media; // Return the matching item
+            }
         }
-        if(!check) {
-            System.out.println("No data is matching");
-        }
+        System.out.println("No data is matching");
+        return null; // Return null if no match is found
     }
+
+    public List<MediaTungNM> getItemOrdered() {
+        return itemsOrdered;
+    }
+
 }
