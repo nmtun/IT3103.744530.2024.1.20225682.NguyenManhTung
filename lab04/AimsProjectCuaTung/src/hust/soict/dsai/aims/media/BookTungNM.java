@@ -12,31 +12,29 @@ public class BookTungNM extends MediaTungNM{
         //super();
     }
 
-    // // Constructor with 4 parameters to match the parent class constructor
-    // public BookTungNM(int id, String title, String category, float price) {
-    //     super(id, title, category, price);
-    // }
+    public BookTungNM(int id, String title, String category, float price) {
+        super(id, title, category, price);
+    }
 
-    // // Constructor with 3 parameters 
-    // public BookTungNM(String title, String category, float price) {
-    //     super(title, category, price);
-    // }
-
-    public void addAuthor(String name) {
-        if(!authors.contains(name)) {
-            System.out.println("Author " + name + " already exist");
+    public boolean addAuthor(String name) {
+        if(authors.contains(name)) {
+            System.out.println("Already exits");
+            return false;
         } else {
             authors.add(name);
-            System.out.println("Author " + name + " has been added successfully");
+            System.out.println("Author " + name + " has been added");
+            return true;
         }
     }
 
-    public void removeAuthor(String name) {
-        if(authors.contains(name)) {
+    public boolean removeAuthor(String name) {
+        if(!authors.contains(name)) {
             System.out.println("Author " + name + " does not exist");
+            return false;
         } else {
             authors.remove(name);
             System.out.println("Author " + name + " has been removed");
+            return true;
         }
     }
 }

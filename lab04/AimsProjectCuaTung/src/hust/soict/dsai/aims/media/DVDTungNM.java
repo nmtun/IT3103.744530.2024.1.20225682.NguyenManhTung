@@ -1,25 +1,7 @@
 package hust.soict.dsai.aims.media;
 
-public class DVDTungNM extends DiscTungNM implements PlayableTungNM {
+public class DVDTungNM extends DiscTungNM implements PlayableTungNM{
     private static int nbDVDTungNM = 0;
-    private String director;
-    private int length;
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
 
     public DVDTungNM(String title) {
         super();
@@ -28,46 +10,28 @@ public class DVDTungNM extends DiscTungNM implements PlayableTungNM {
         setId(nbDVDTungNM);
     }
 
-    public DVDTungNM(String title, String category, float price) {
-        super();
-        setTitle(title);
-        setCategory(category);
-        setPrice(price);
-        nbDVDTungNM++;
-        setId(nbDVDTungNM);
+    public DVDTungNM(String title, float price) {
+        super(title, price);
     }
 
-    public DVDTungNM(String title, String category, String director, float cost) {
-		super();
-        setTitle(title);
+    public DVDTungNM(String title, String category, float price) {
+        this(title);
         setCategory(category);
+        setPrice(price);
+	}
+
+    public DVDTungNM(String director, String title, String category, float price) {
+        this(category, title, price);
         setDirector(director);
-        setPrice(cost);
-        nbDVDTungNM++;
-        setId(nbDVDTungNM);
 	}
 
     public DVDTungNM(String title, String category, String director, int length, float price) {
-        super();
-        setTitle(title);
-        setCategory(category);
-        setDirector(director);
-        setLength(length);
-        setPrice(price);
-        nbDVDTungNM++;
-        setId(length);
+       this(director, category, title, price);
+       setLength(length);
     }
 
     public void play() {
-        System.out.println("DVD playing is: " + this.getTitle());
-        System.out.println("DVD length is: " + this.getLength());
-    }
-
-    @Override
-    public String toString() {
-        return "DVDTungNM{" +
-                "director='" + director + '\'' +
-                ", length=" + length +
-                '}' + super.toString();
+        System.out.println("Plying DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
 }

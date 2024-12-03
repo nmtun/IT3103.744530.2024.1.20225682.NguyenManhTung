@@ -23,13 +23,14 @@ public class DiscTungNM extends MediaTungNM{
     public void setDirector(String director) {
         this.director = director;
     }
+
+    public DiscTungNM(String title, float price) {
+        super(title, price);
+    }
     
     public DiscTungNM(int id, String title, String category, float price, int length, String director) {
-        super();
-        setTitle(title);
-        setCategory(category);
+        super(id, title, category, price);
         this.length = length;
         this.director = director;
-        setPrice(price);
     }
 }

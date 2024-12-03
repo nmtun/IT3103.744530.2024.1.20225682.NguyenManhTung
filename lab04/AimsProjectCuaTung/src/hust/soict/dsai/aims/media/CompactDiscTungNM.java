@@ -5,71 +5,57 @@ import java.util.List;
 
 public class CompactDiscTungNM extends DiscTungNM implements PlayableTungNM{
     private String artist;
-    private List<TrackTungNM> tracksNmtung = new ArrayList<TrackTungNM>();
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public CompactDiscTungNM() {
-        super();
-    }
+    private List<TrackTungNM> tracks = new ArrayList<>();
 
     // create 
-    public CompactDiscTungNM(int id, String title) {
-        super();
-        setId(id);
-        setTitle(title);
+    public CompactDiscTungNM(String title, float price) {
+        super(title, price);
     }
 
-    public CompactDiscTungNM(int id, String title, String category) {
-        super();
-        setId(id);
-        setTitle(title);
-        setCategory(category);
+    public CompactDiscTungNM(int id, String title, String category, float price, int length, String director) {
+        super(id, title, category, price, length, director);
     }
 
-    public CompactDiscTungNM(int id, String title, String category, float price) {
-        super();
-        setId(id);
-        setTitle(title);
-        setCategory(category);
-        setPrice(price);
+    public CompactDiscTungNM(int id, String title, String category, float price, int length, String director, String artist, List<TrackTungNM> tracks) {
+        super(id, title, category, price, length, director);
+        this.artist = artist;
+        this.tracks.addAll(tracks);
     }
 
-    public void addTrack(TrackTungNM track) {
-        if(!tracksNmtung.contains(track)) {
-            tracksNmtung.add(track);
-            System.out.println("Track added successfully");
+    public boolean addTrack(TrackTungNM track) {
+        if(tracks.contains(track)) {
+            System.out.println("Already exits");
+            return false;
         } else {
-            System.out.println(track + " already exist");
+            tracks.add(track);
+            System.out.println("Track: " + track + " have been added");
+            return true;
         }
     }
 
-    public void removeTrack(TrackTungNM track) {
-        if(tracksNmtung.contains(track)) {
-            tracksNmtung.remove(track);
-            System.out.println("Track have been removed");
+    public boolean removeTrack(TrackTungNM track) {
+        if(!tracks.contains(track)) {
+            System.out.println("Not exits");
+            return false;
         } else {
-            System.out.println(track + " not exist");
+            tracks.add(track);
+            System.out.println("Track: " + track + " have been removed");
+            return true;
         }
     }
 
-    public int getLength() {
-        int sumLength = 0;
-        for(TrackTungNM track: tracksNmtung) {
-            sumLength += track.getLength();
+    public int getTotalLength() {
+        int totalLength = 0;
+        for(TrackTungNM track: tracks) {
+            totalLength += track.getLength();
         }
-        return sumLength;
+        return totalLength;
     }
 
     public void play() {
-        System.out.println("CD playing is: " + this.getTitle());
-        System.out.println("CD length is: " + this.getLength());
-
-        for(int i=1; i<=tracksNmtung.size(); i++) {
-            System.out.println("Track: " + i);
-            tracksNmtung.get(i).play(); 
+        for(TrackTungNM track : tracks) {
+            System.out.println("Playing track: " + track.getTitle());
+            track.play();
         }
     }
 }

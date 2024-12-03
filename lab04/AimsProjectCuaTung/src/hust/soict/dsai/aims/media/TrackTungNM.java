@@ -28,14 +28,14 @@ public class TrackTungNM implements PlayableTungNM{
     }
 
     public void play() {
-        System.out.println("Track playing is: " + this.getTitle());
-        System.out.println("Track length is: " + this.getLength());
+        System.out.println("Plying Track: " + this.getTitle());
+        System.out.println("Track length: " + this.getLength());
     }
 
     @Override
     public boolean equals(Object o) {
         if(!(o instanceof TrackTungNM)) return false;
-        // 2 track items are considered as indentical if thay same title
+        // 2 media items are considered as indentical if thay same title
         return (((TrackTungNM) o).getTitle().equals(title) && ((TrackTungNM) o).getLength() == length);
     }
 }
