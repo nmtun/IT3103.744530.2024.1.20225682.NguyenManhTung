@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
 
-public class MediaTungNM {
+public abstract class MediaTungNM {
     private int id;
     private String title;
     private String category;
@@ -47,32 +47,27 @@ public class MediaTungNM {
         //TODO Auto-generated constructor stub
     }
 
-    public MediaTungNM(String title) {
-        this(title, "", 0.0f);
+    public MediaTungNM(String title, float price) {
+        this.title = title;
+        this.price = price;
     }
 
-    // Constructor with title and category
-    public MediaTungNM(String title, String category) {
-        this(0, title, category, 0.0f);
-    }
-
-    // Constructor with title, category, and cost
     public MediaTungNM(String title, String category, float price) {
-        this(0, title, category, price);
+        this.title = title;
+        this.category = category;
+        this.price = price;
     }
-	public MediaTungNM(int id, String title, String category, float price) {
-		this.id = id;
-		this.title = title;
-		this.category = category;
-		this.price = price;
-	}
+
+    public MediaTungNM(int id, String title, String category, float price) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.price = price;
+    }
 
     // method check title matching    
     public boolean isMatchNmt(String title) {
-        if(getTitle() == null) {
-                return false;
-        }
-        return getTitle().equalsIgnoreCase(title);
+        return (this.getTitle().toLowerCase().equals(title.toLowerCase()));
     }
 
     @Override
@@ -84,6 +79,11 @@ public class MediaTungNM {
 
     @Override
     public String toString() {
-        return "MediaTungNM{" + "Title='" + title + '\'' + ", cost=" + price + '}'; 
+        return "MediaTungNM{" +
+                "id" + id + 
+                ", title='" + title + '\'' + 
+                ", category='" + category + '\'' +
+                ", cost=" + price + 
+                '}'; 
     }
 }

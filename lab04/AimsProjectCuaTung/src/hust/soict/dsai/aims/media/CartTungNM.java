@@ -5,32 +5,36 @@ import java.util.List;
 
 public class CartTungNM {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private List<MediaTungNM> itemsOrdered = new ArrayList<MediaTungNM>();
+    private List<MediaTungNM> itemsOrdered = new ArrayList<>();
 
     //add item
-	public void addMediaTungNM(MediaTungNM product) {
-	    if(!itemsOrdered.contains(product) && itemsOrdered.size() < MAX_NUMBERS_ORDERED ) {
-	        itemsOrdered.add(product);
-	        System.out.println("Media has been added");
-	    } else {
-	        System.out.println("Media existed or your cart is full, please check again");
-	    }
+	public boolean addMediaTungNM(MediaTungNM media) {
+        if(itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
+            System.out.println("Your cart is full");
+            return false;
+        } else {
+            itemsOrdered.add(media);
+            System.out.println("Item has been added");
+            return true;
+        }
 	}
 
     //remove item 
-    public void removeMediaTungNM(int choice) {
-        if(itemsOrdered.contains(choice)) {
-            itemsOrdered.remove(choice);
-            System.out.println("Media has ben removed");
+    public boolean removeMediaTungNM(MediaTungNM media) {
+        if(!itemsOrdered.contains(media)) {
+            System.out.println("Item not found");
+            return false;
         } else {
-            System.out.println("Media not exits");
+            itemsOrdered.remove(media);
+            System.out.println("Item has been removed");
+            return true;
         }
     }
 
     //caculate total price
     public float totalPrice(){
-        float total = 0;
-        for(int i=0; i<itemsOrdered.size(); i++){
+        float total = 0f;
+        for(int i=0; i<itemsOrdered.size(); i++) {
             total += itemsOrdered.get(i).getPrice();
         }
         return total;
@@ -41,9 +45,9 @@ public class CartTungNM {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
         for(int i=0; i<itemsOrdered.size(); i++) {
-            MediaTungNM dvd = itemsOrdered.get(i);
-            System.out.printf("%d. %s - %d: %.2f$ \n",
-                                    i+1, dvd.getTitle(), dvd.getCategory(), dvd.getPrice() );
+            MediaTungNM media = itemsOrdered.get(i);
+            System.out.printf("%d. Media %s - %s: %.2f$ \n",
+                                    i+1, media.getTitle(), media.getCategory(), media.getPrice() );
         }
 
         float totalCost = totalPrice();
@@ -52,36 +56,26 @@ public class CartTungNM {
     }
 
     // search by ID
-    public MediaTungNM searchByIdNmt(int id) {
+    public boolean searchByIdNmt(int id) {
         int n = itemsOrdered.size();
         for(int i=0; i<n; i++) {
-            if(itemsOrdered.get(n).getId() == id) return itemsOrdered.get(i);
+            if(itemsOrdered.get(n).getId() == id) return true;
         }
-        return null;
+        return false;
     }
 
     //search by title 
-    public MediaTungNM searchByTitleNmt(String title) {
+    public void searchByTitleNmt(String title) {
         int n = itemsOrdered.size();
+        boolean check = false;
         for(int i=0; i<n; i++) {
             if(itemsOrdered.get(n).isMatchNmt(title)) {
-               return itemsOrdered.get(i);
+                System.out.println("Your cart has a Media as name: " + title);
+                check = true;
             } 
         }
-        return null;
+        if(!check) {
+            System.out.println("No data is matching");
+        }
     }
-
-    public void sortByTitleCost() {
-        Collections.sort(itemsOrdered, MediaTungNM.COMPARE_BY_TITLE_COST);
-    }
-
-    public void sortByCostTitle() {
-        Collections.sort(itemsOrdered, MediaTungNM.COMPARE_BY_COST_TITLE);
-    }
-
-    public void emptyMediaTungNM() {
-	    for (int i = 0; i < itemsOrdered.size(); i++) {
-	    	itemsOrdered.clear();
-	    }
-	}
 }
