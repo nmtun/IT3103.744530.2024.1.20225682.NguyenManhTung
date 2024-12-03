@@ -14,12 +14,18 @@ public class AimsTungNM {
     
     public static void main(String[] args) {
     	
-    	DVDTungNM dvd1 = new DVDTungNM("Doraemon", "Viễn tưởng", "Fujiko F. Fujio", 120, 20f);
-    	DVDTungNM dvd2 = new DVDTungNM("Conan", "Trinh thám", "Gosho Aoyama", 120, 50f);
-    	DVDTungNM dvd3 = new DVDTungNM("Shin - crayon boy", "Hài hước", "Yoshito Usui", 120, 10f);
-    	DVDTungNM dvd4 = new DVDTungNM("Miko", "Tình cảm", "Eriko Ono", 120, 40f);
-    	DVDTungNM dvd5 = new DVDTungNM("Dragonball", "Hành động", "Akira Toriyama", 120, 20f);
+    	DVDTungNM dvd1 = 
+    	        new DVDTungNM("Doraemon", "Anime", "Fujiko F. Fujio", 120, 20f);
+    	DVDTungNM dvd2 = 
+    	        new DVDTungNM("Conan", "Anime", "Gosho Aoyama", 120, 50f);
+    	DVDTungNM dvd3 = 
+    	        new DVDTungNM("Shin - crayon boy", "Anime", "Yoshito Usui", 120, 10f);
+    	DVDTungNM dvd4 = 
+    	        new DVDTungNM("Miko", "Drama", "Eriko Ono", 120, 40f);
+    	DVDTungNM dvd5 = 
+    	        new DVDTungNM("Dragonball", "Adventure", "Akira Toriyama", 120, 20f);
         
+        //add 2 dvd
         cart.addMediaTungNM(dvd1);
         cart.addMediaTungNM(dvd2);
         cart.addMediaTungNM(dvd3);
@@ -129,7 +135,7 @@ public class AimsTungNM {
                     cart.addMediaTungNM(media);
                     break;
                 case 2:
-                    if (media instanceof MediaTungNM) {
+                    if (media instanceof PlayableTungNM) {
                         ((PlayableTungNM) media).play();
                     } else {
                         System.out.println("This media cannot be played.");
