@@ -9,6 +9,12 @@ public class StoreTungNM {
     private ArrayList<MediaTungNM> itemsInNmtStore = new ArrayList<MediaTungNM>();
     private CartTungNM cart = new CartTungNM();
 
+    public void setCart(CartTungNM cart) {
+        if (cart != null) {
+            this.cart = cart;
+        }
+    }
+
     public CartTungNM getCart() {
         return cart;
     }

@@ -6,9 +6,12 @@ import hust.soict.dsai.aims.media.PlayableTungNM;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,7 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class CartScreenController {
     private CartTungNM cart;
 
-     @FXML
+    @FXML
     private Button btnPlay;
 
     @FXML
@@ -40,7 +43,7 @@ public class CartScreenController {
     @FXML
     private TableView<MediaTungNM> tblMedia;
 
-     @FXML
+    @FXML
     private RadioButton radioBtnFilterId;
 
     @FXML
@@ -49,6 +52,11 @@ public class CartScreenController {
     @FXML
     private TextField tfFilter;
 
+    @FXML
+    private Label lbTotalPrice;
+
+    @FXML
+    private Button btnPlaceOrder;
 
     public CartScreenController (CartTungNM cart) {
         super();
@@ -81,8 +89,20 @@ public class CartScreenController {
                 showFiterMedia(newValue);
             }
         });
+
+        cart.getItemsOrdered().addListener((ListChangeListener.Change<? extends MediaTungNM> change) -> {
+            updateTotalPrice();
+        });
+        updateTotalPrice();
     }
     
+    private void updateTotalPrice() {
+        float total = cart.totalPrice();
+        javafx.application.Platform.runLater(() -> {
+            lbTotalPrice.setText(String.format("%.2f $", total));
+        });
+    }
+
     void updateButtonBar(MediaTungNM media) {
         btnRemove.setVisible(true);
         if(media instanceof PlayableTungNM) btnPlay.setVisible(true);
@@ -98,4 +118,50 @@ public class CartScreenController {
         MediaTungNM media = tblMedia.getSelectionModel().getSelectedItem();
         cart.removeMediaTungNM(media);
     }
+
+    @FXML
+    void btnPlaceOrderPressed(ActionEvent event) {
+        if (cart.getItemsOrdered().isEmpty()) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Error");
+            errorAlert.setHeaderText("Order Error");
+            errorAlert.setContentText("Your cart is empty. Please add items to your cart before placing an order.");
+            errorAlert.showAndWait();
+            return;
+        }
+    
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Order Details");
+        alert.setHeaderText("Your Order Details");
+        
+        StringBuilder details = new StringBuilder();
+        details.append("***********************CART***********************\n");
+        details.append("Ordered Items:\n");
+        for (int i = 0; i < cart.getItemsOrdered().size(); i++) {
+            MediaTungNM media = cart.getItemsOrdered().get(i);
+            details.append(String.format("%d. Media %s - %s: %.2f$\n",
+                    i + 1, media.getTitle(), media.getCategory(), media.getCost()));
+        }
+        details.append(String.format("Total cost: %.2f $\n", cart.totalPrice()));
+        details.append("***************************************************");
+    
+        alert.setContentText(details.toString());
+    
+        alert.showAndWait();
+    
+        cart.emptyCart();
+    }
+
+    @FXML
+    void btnPlayPressed(ActionEvent event) {
+        MediaTungNM media = tblMedia.getSelectionModel().getSelectedItem();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Media Information");
+        alert.setHeaderText("Now Playing");
+        alert.setContentText(String.format("You are playing: %s\nLength: %d minutes", media.getTitle(), media.getLength()));
+
+        alert.showAndWait();
+    }
+
 }

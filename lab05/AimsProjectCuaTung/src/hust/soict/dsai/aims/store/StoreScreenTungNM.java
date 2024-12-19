@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import hust.soict.dsai.aims.cart.CartScreenTungNM;
+import hust.soict.dsai.aims.media.CartTungNM;
 import hust.soict.dsai.aims.media.MediaTungNM;
 import hust.soict.dsai.aims.media.StoreTungNM;
 
 public class StoreScreenTungNM extends JFrame {
     private StoreTungNM store;
+    private CartTungNM cart;
 
-    public StoreScreenTungNM(StoreTungNM store) {
+    public StoreScreenTungNM(StoreTungNM store, CartTungNM cart) {
         this.store = store;
+        this.cart = cart;
 
         // Cài đặt Container chính của JFrame
         Container cp = getContentPane();
@@ -89,10 +92,10 @@ public class StoreScreenTungNM extends JFrame {
     JPanel createCenter() {
         JPanel center = new JPanel();
         center.setLayout(new GridLayout(3, 3, 2, 2));
-
+    
         ArrayList<MediaTungNM> mediaInStore = store.getItemsInStore();
         for (MediaTungNM media : mediaInStore) {
-            MediaStoreTungNM cell = new MediaStoreTungNM(media);
+            MediaStoreTungNM cell = new MediaStoreTungNM(media, cart); // Truyền cả cart
             center.add(cell);
         }
 

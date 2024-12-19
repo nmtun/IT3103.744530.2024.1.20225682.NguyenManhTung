@@ -15,15 +15,24 @@ public class CartTungNM {
 
     //add item
 	public boolean addMediaTungNM(MediaTungNM media) {
+        if (media == null) {
+            return false;
+        }
+        
         if(itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
             System.out.println("Your cart is full");
             return false;
-        } else {
-            itemsOrdered.add(media);
-            System.out.println("Item has been added in your cart");
-            return true;
+        } 
+        
+        if (itemsOrdered.contains(media)) {
+            System.out.println("Item already exists in cart");
+            return false;
         }
-	}
+        
+        itemsOrdered.add(media);
+        System.out.println("Item has been added to your cart");
+        return true;
+    }
 
     //remove item 
     public boolean removeMediaTungNM(MediaTungNM media) {
@@ -38,7 +47,7 @@ public class CartTungNM {
     }
 
     //caculate total price
-    public float totalPrice(){
+    public float totalPrice() {
         float total = 0f;
         for(int i=0; i<itemsOrdered.size(); i++) {
             total += itemsOrdered.get(i).getCost();
@@ -57,18 +66,9 @@ public class CartTungNM {
         }
 
         float totalCost = totalPrice();
-        System.out.printf("Total cost: %.2f $ \n", totalCost);
+        System.out.printf("Total price: %.2f $ \n", totalCost);
         System.out.println("***************************************************");
     }
-
-    // search by ID
-    // public boolean searchByIdNmt(int id) {
-    //     int n = itemsOrdered.size();
-    //     for(int i=0; i<n; i++) {
-    //         if(itemsOrdered.get(n).getId() == id) return true;
-    //     }
-    //     return false;
-    // }
 
     public MediaTungNM searchByIdNmt(int id) {
         for (MediaTungNM item : itemsOrdered) {
@@ -79,29 +79,6 @@ public class CartTungNM {
         return null; // Trả về null nếu không tìm thấy
     }
     
-    
-
-    //search by title 
-    // public boolean searchByTitleNmt(String title) {
-    //     int n = itemsOrdered.size();
-    //     //boolean check = false;
-    //     int cnt = 0;
-    //     for(int i=0; i<n; i++) {
-    //         if(itemsOrdered.get(i).isMatchNmt(title)) {
-    //             // System.out.println("Your cart has a Media as name: " + title);
-    //             // return true;
-    //             cnt++;
-    //         } 
-    //     }
-    //     if(cnt != 0) {
-    //         System.out.println("Your cart has a Media as name: " + title);
-    //         return true;
-    //     } else {
-    //         System.out.println("No data is matching");
-    //         return false;
-    //     }
-    // }
-
     public MediaTungNM searchByTitleNmt(String title) {
         for (MediaTungNM media : itemsOrdered) {
             if (media.isMatchNmt(title)) {
@@ -121,9 +98,7 @@ public class CartTungNM {
     }
 
     public void emptyCart() {
-        for(int i=0; i<itemsOrdered.size(); i++) {
-            itemsOrdered.clear();
-        }
+        itemsOrdered.clear();
     }
 
 }

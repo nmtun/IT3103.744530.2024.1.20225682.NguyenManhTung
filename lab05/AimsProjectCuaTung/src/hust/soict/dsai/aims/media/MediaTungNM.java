@@ -97,7 +97,7 @@ public abstract class MediaTungNM implements Comparable<MediaTungNM>{
     return Double.compare(getCost(), o.getCost());
 }
 
-    public Object getLength() {
+    public int getLength() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getLength'");
     }

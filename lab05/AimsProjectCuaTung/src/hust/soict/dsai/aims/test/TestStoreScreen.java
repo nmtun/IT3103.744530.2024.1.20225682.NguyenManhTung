@@ -1,12 +1,14 @@
 package hust.soict.dsai.aims.test;
 
 import javax.swing.*;
+
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.store.*;
 
 public class TestStoreScreen {
     public static void main(String[] args) {
         StoreTungNM store = new StoreTungNM();
+        CartTungNM cart = new CartTungNM();
 
         MediaTungNM m1 = new DVDTungNM("Fujio", "Doraemon", "Anime",15,  15f);
         MediaTungNM m2 = new BookTungNM(0, "Why we sleep", "Scientific", 9f);
@@ -18,7 +20,9 @@ public class TestStoreScreen {
         store.addMediaTungNM(m3);
         store.addMediaTungNM(m4);
 
-        StoreScreenTungNM storeScreen = new StoreScreenTungNM(store);
+        StoreScreenTungNM storeScreen = new StoreScreenTungNM(store, cart);
+        //CartScreenTungNM cartScreen = new CartScreenTungNM(cart);
+        store.setCart(cart);
 
         storeScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

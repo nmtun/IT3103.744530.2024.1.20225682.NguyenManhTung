@@ -11,9 +11,11 @@ import java.awt.event.ActionListener;
 
 public class MediaStoreTungNM extends JPanel {
     private MediaTungNM media;
+    private CartTungNM cart;
 
-    public MediaStoreTungNM(MediaTungNM media) {
+    public MediaStoreTungNM(MediaTungNM media, CartTungNM cart) {
         this.media = media;
+        this.cart = cart;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JLabel title = new JLabel(media.getTitle());
@@ -28,18 +30,22 @@ public class MediaStoreTungNM extends JPanel {
 
         // Add "Add to Cart" Button
         JButton addToCartButton = new JButton("Add to cart");
-        addToCartButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Show success message
+        addToCartButton.addActionListener(e -> {
+            boolean success = cart.addMediaTungNM(media);
+            if (success) {
                 JOptionPane.showMessageDialog(
                     MediaStoreTungNM.this, 
                     "Added " + media.getTitle() + " to the cart successfully!", 
                     "Add to Cart", 
                     JOptionPane.INFORMATION_MESSAGE
                 );
-
-
+            } else {
+                JOptionPane.showMessageDialog(
+                    MediaStoreTungNM.this, 
+                    "Failed to add " + media.getTitle() + " to cart", 
+                    "Add to Cart", 
+                    JOptionPane.ERROR_MESSAGE
+                );
             }
         });
         container.add(addToCartButton);
