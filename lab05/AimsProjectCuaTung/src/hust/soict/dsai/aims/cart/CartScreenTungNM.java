@@ -16,7 +16,7 @@ public class CartScreenTungNM extends JFrame{
     public CartScreenTungNM(CartTungNM cart) {
         super();
         this.cart = cart;
-        setSize(1024, 768);
+        setSize(1050, 768);
 
         JFXPanel fxPanel = new JFXPanel();
         this.add(fxPanel);

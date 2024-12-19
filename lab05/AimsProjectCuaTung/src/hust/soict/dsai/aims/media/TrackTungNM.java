@@ -3,6 +3,7 @@ package hust.soict.dsai.aims.media;
 public class TrackTungNM implements PlayableTungNM{
     private String title;
     private int length;
+    private float price;
 
     public String getTitle() {
         return title;
@@ -21,10 +22,11 @@ public class TrackTungNM implements PlayableTungNM{
         this.title = title;
     }
 
-    public TrackTungNM(String title, int length) {
+    public TrackTungNM(String title, int length, float price) {
         super();
         this.title = title;
         this.length = length;
+        this.price = price;
     }
 
     public void play() {

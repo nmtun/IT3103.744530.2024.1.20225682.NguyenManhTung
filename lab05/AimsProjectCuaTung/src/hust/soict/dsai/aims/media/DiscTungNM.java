@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.media;
 
-public class DiscTungNM extends MediaTungNM{
+public class DiscTungNM extends MediaTungNM implements PlayableTungNM{
     private int length;
     private String director;
 
@@ -32,5 +32,10 @@ public class DiscTungNM extends MediaTungNM{
         super(id, title, category, cost);
         this.length = length;
         this.director = director;
+    }
+
+    public void play() {
+        System.out.println("Plying Disc: " + this.getTitle());
+        System.out.println("Disc length: " + this.getLength());
     }
 }
