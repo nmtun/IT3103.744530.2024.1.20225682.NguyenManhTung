@@ -21,7 +21,7 @@
    <top>
       <VBox prefWidth="328.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar prefHeight="25.0" prefWidth="55.0">
+            <!-- <MenuBar prefHeight="25.0" prefWidth="55.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Options">
                   <items>
@@ -37,7 +37,7 @@
                   </items>
                 </Menu>
               </menus>
-            </MenuBar>
+            </MenuBar> -->
             <Label text="CART" textFill="#ff00d3">
                <font>
                   <Font size="50.0" />
