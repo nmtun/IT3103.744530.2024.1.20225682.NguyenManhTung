@@ -10,7 +10,7 @@ public class AimsProjectTungNM {
     public static CartTungNM cart = new CartTungNM();
 
     public static void main(String[] args) {
-        MediaTungNM m1 = new DVDTungNM("Fujio", "Doraemon", "Anime",15,  15f);
+        MediaTungNM m1 = new DVDTungNM("Doraemon", "DVD", 20.99f, 15, "Fijio");
         MediaTungNM m2 = new BookTungNM(0, "Why we sleep", "Scientific", 9f);
         MediaTungNM m3 = new CompactDiscTungNM(1, "Gao ranger", "Super sentai", 20f, 2, "TungNM");
 

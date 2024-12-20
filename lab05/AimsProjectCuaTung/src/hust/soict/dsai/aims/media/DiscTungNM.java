@@ -34,6 +34,12 @@ public class DiscTungNM extends MediaTungNM implements PlayableTungNM{
         this.director = director;
     }
 
+    public DiscTungNM(String title, String category, float cost, int length, String director) {
+        super(title, category, cost);
+        this.length = length;
+        this.director = director;
+    }
+
     public void play() {
         System.out.println("Plying Disc: " + this.getTitle());
         System.out.println("Disc length: " + this.getLength());

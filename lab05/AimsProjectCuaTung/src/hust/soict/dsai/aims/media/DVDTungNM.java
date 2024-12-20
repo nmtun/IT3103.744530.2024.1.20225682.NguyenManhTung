@@ -25,9 +25,9 @@ public class DVDTungNM extends DiscTungNM implements PlayableTungNM{
         setDirector(director);
 	}
 
-    public DVDTungNM(String title, String category, String director, int length, float cost) {
-       this(title, category, director, cost);
-       setLength(length);
+    public DVDTungNM(String title, String category, float cost, int length,  String director) {
+       super(title, category, cost, length, director);
+       //setLength(length);
     }
 
     public void play() {
