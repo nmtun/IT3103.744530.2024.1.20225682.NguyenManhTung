@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.store;
 
 import javax.swing.*;
 
-import hust.soict.dsai.aims.media.CartTungNM;
+import hust.soict.dsai.aims.cart.CartTungNM;
 import hust.soict.dsai.aims.media.MediaTungNM;
 import hust.soict.dsai.aims.media.PlayableTungNM;
 import java.awt.*;

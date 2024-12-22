@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import hust.soict.dsai.aims.media.CartTungNM;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;

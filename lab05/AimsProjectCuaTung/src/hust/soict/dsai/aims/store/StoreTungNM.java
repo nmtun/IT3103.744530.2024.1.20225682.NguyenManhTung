@@ -1,8 +1,11 @@
-package hust.soict.dsai.aims.media;
+package hust.soict.dsai.aims.store;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.print.attribute.standard.Media;
+
+import hust.soict.dsai.aims.cart.CartTungNM;
+import hust.soict.dsai.aims.media.MediaTungNM;
 
 public class StoreTungNM {
     public static final int MAX_MEDIA_IN_STORE = 50;

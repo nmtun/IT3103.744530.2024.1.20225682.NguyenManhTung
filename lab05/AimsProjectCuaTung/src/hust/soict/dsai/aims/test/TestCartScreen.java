@@ -3,6 +3,7 @@ package hust.soict.dsai.aims.test;
 import javax.swing.*;
 
 import hust.soict.dsai.aims.cart.CartScreenTungNM;
+import hust.soict.dsai.aims.cart.CartTungNM;
 import hust.soict.dsai.aims.media.*;
 
 public class TestCartScreen {
